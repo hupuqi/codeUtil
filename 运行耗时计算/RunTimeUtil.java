@@ -44,8 +44,7 @@ public class RunTimeUtil {
      * 总耗时
      */
     public long allUseTime(){
-        long time=getTime();
-        return time-beginTime;
+        return getTime()-beginTime;
     }
 
     /**
