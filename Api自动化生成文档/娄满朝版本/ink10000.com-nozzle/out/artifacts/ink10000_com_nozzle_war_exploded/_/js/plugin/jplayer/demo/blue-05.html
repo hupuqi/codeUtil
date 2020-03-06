@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jPlayer circle player</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../lib/circle-player/skin/circle.player.css">
+</head>
+<body>
+<div class="cp-jplayer" id="media_audio_content"></div>
+<div class="cp-container" id="media_audio_ancestor">
+	<div class="cp-buffer-holder">
+		<div class="cp-buffer-1"></div>
+		<div class="cp-buffer-2"></div>
+	</div>
+	<div class="cp-progress-holder">
+		<div class="cp-progress-1"></div>
+		<div class="cp-progress-2"></div>
+	</div>
+	<div class="cp-circle-control"></div>
+	<ul class="cp-controls">
+		<li><a class="cp-play">&nbsp;</a></li>
+		<li><a style="display:none;" class="cp-pause">&nbsp;</a></li>
+	</ul>
+</div>
+<script type="text/javascript" src="../../../jquery.min-1.11.1.js"></script>
+<script type="text/javascript" src="../lib/circle-player/js/jquery.transform2d.js"></script>
+<script type="text/javascript" src="../lib/circle-player/js/jquery.grab.js"></script>
+<script type="text/javascript" src="../lib/circle-player/js/mod.csstransforms.min.js"></script>
+<script type="text/javascript" src="../lib/circle-player/js/circle.player.js"></script>
+<script type="text/javascript" src="../jquery.jplayer.min-2.9.2.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	new CirclePlayer("#media_audio_content",{
+		m4a:"http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
+		oga:"http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
+	},{
+		cssSelectorAncestor:"#media_audio_ancestor",
+		keyEnabled:true,
+		swfPath:"../",
+		wmode:"window"
+	});
+});
+</script>
+</body>
+</html>

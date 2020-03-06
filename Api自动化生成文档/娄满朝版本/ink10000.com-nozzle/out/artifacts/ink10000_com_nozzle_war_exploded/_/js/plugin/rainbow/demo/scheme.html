@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>scheme</title>
+	<meta charset="UTF-8">
+	<link href="../css/twilight.css" rel="stylesheet" type="text/css" media="screen">
+</head>
+<body>
+<pre>
+	<code data-language="scheme">
+;; Produces the union of two sets
+(define (set-union set1 set2)
+  (let loop ((set1 set1)
+	     (set2 set2))
+    (if (null? set2)
+	set1
+	(let ((item (car set2)))
+	  (if (member item set1)
+	      (loop set1 (cdr set2))
+	      (loop (cons item set1) (cdr set2)))))))
+
+(define (all? pred coll)
+  (if (null? coll)
+      #t
+      (and (pred (car coll))
+           (all? pred (cdr coll)))))
+
+(define (filter pred coll)
+  (let loop ((ret '())
+             (coll coll))
+    (if (null? coll)
+        (reverse ret)
+        (let ((a (car coll)))
+          (if (pred a)
+              (loop (cons a ret) (cdr coll))
+              (loop ret (cdr coll)))))))
+	</code>
+</pre>
+<script type="text/javascript" src="../rainbow-2.1.2.js"></script>
+<script type="text/javascript" src="../lang/scheme.js"></script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jPlayer Development Tester</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../skin/blue.monday/css/jplayer.blue.monday.min.css">
+	<link rel="stylesheet" type="text/css" href="../../rainbow/css/github.css" media="screen">
+</head>
+<body>
+<a href="blue-01-android.html">blue-01-android.html</a><br>
+<a href="blue-01-audio.html">blue-01-audio.html</a><br>
+<a href="blue-01-video.html">blue-01-video.html</a><br>
+<a href="blue-02-audio.html">blue-02-audio.html</a><br>
+<a href="blue-02-video.html">blue-02-video.html</a><br>
+<a href="blue-03-popcorn.html">blue-03-popcorn.html</a><br>
+<a href="blue-04.html">blue-04.html</a><br>
+<a href="blue-05.html">blue-05.html</a><br>
+<a href="index.html">index.html</a><br>
+<a href="pink.html">pink.html</a><br><br>
+
+<div class="jp-jplayer" id="media_content_1"></div>
+<div class="jp-audio" id="media_ancestor_1">
+	<div class="jp-type-single">
+		<div class="jp-gui jp-interface">
+			<div class="jp-controls">
+				<button class="jp-play">&nbsp;</button>
+				<button class="jp-stop">&nbsp;</button>
+			</div>
+			<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>
+			<div class="jp-volume-controls">
+				<button class="jp-mute"></button>
+				<div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div>
+				<button class="jp-volume-max"></button>
+			</div>
+			<div class="jp-time-holder">
+				<div class="jp-current-time">&nbsp;</div>
+				<div class="jp-duration">&nbsp;</div>
+				<div class="jp-toggles"><button class="jp-repeat">&nbsp;</button></div>
+			</div>
+		</div>
+		<div class="jp-details"><div class="jp-title">&nbsp;</div></div>
+		<div class="jp-no-solution"><span>Update Required</span>To play the media you will need to either update your browser to a recent version or update your <a href="#">Flash plugin</a>.</div>
+	</div>
+</div>
+<div id="media_inspector_1"></div>
+
+<div class="jp-jplayer" id="media_audio_content"></div>
+<div style="margin-top:1rem;" class="jp-audio" id="media_audio_ancestor">
+	<div class="jp-type-playlist">
+		<div class="jp-gui jp-interface">
+			<div class="jp-controls">
+				<button class="jp-previous">&nbsp;</button>
+				<button class="jp-play">&nbsp;</button>
+				<button class="jp-next">&nbsp;</button>
+				<button class="jp-stop">&nbsp;</button>
+			</div>
+			<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>
+			<div class="jp-time-holder">
+				<div class="jp-current-time">&nbsp;</div>
+				<div class="jp-duration">&nbsp;</div>
+			</div>
+			<div class="jp-volume-controls">
+				<button class="jp-mute">&nbsp;</button>
+				<div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div>
+				<button class="jp-volume-max">&nbsp;</button>
+			</div>
+			<div class="jp-toggles">
+				<button class="jp-repeat">&nbsp;</button>
+				<button class="jp-shuffle">&nbsp;</button>
+			</div>
+		</div>
+		<div class="jp-playlist"><ul><li>&nbsp;</li></ul></div>
+		<div class="jp-no-solution"><span>Update Required</span>To play the media you will need to either update your browser to a recent version or update your <a href="#">Flash plugin</a>.</div>
+	</div>
+</div>
+
+<div style="margin-top:1rem;" class="jp-video jp-video-270p jp-video-360p" id="media_ancestor_2">
+	<div class="jp-type-single">
+		<div class="jp-jplayer" id="media_content_2"></div>
+		<div class="jp-gui">
+			<div class="jp-video-play"><button class="jp-video-play-icon">&nbsp;</button></div>
+			<div class="jp-interface">
+				<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>
+				<div class="jp-current-time">&nbsp;</div>
+				<div class="jp-duration">&nbsp;</div>
+				<div class="jp-controls-holder">
+					<div class="jp-volume-controls">
+						<button class="jp-mute">&nbsp;</button>
+						<div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div>
+						<button class="jp-volume-max">&nbsp;</button>
+					</div>
+					<div class="jp-controls">
+						<button class="jp-play">&nbsp;</button>
+						<button class="jp-stop">&nbsp;</button>
+					</div>
+					<div class="jp-toggles">
+						<button class="jp-repeat">&nbsp;</button>
+						<button class="jp-full-screen">&nbsp;</button>
+					</div>
+				</div>
+				<div class="jp-details"><div class="jp-title">&nbsp;</div></div>
+			</div>
+		</div>
+		<div class="jp-no-solution"><span>Update Required</span>To play the media you will need to either update your browser to a recent version or update your <a href="#">Flash plugin</a>.</div>
+	</div>
+</div>
+<div id="media_inspector_2"></div>
+<pre data-language="javascript">
+$("#media_content").jPlayer({
+	audioFullScreen:true,
+	autoBlur:false,
+	cssSelector:{duration:""}
+	cssSelectorAncestor:"#jp_container_1"|"#media_ancestor",
+	errorAlerts:true,
+	globalVolume:true,
+	keyBindings:{play:{key:32,fn:function(f){}}}
+	keyEnabled:true,
+	preload:"auto"|"metadata",
+	remainingDuration:true,
+	size:{width:"640px",height:"360px",cssClass:"jp-video-270p"|"jp-video-360p"},
+	smoothPlayBar:true,
+	solution:"flash,html"|"",
+	supplied:"flv,m4a,m4v,mp3,oga,ogv,rtmpv,webmv",
+	swfPath:"../dist/jplayer",
+	toggleDuration:true,
+	useStateClassSkin:true,
+	volume:0.2,
+	warningAlerts:true,
+	wmode:"window",
+	click:function(ev){},
+	error:function(ev){},
+	flashreset:function(ev){},
+	ready:function(ev){
+		$(this).bind($.jPlayer.event.ended+".event",function(ev){});
+		$(this).data("jPlayer")._trigger("event")
+		$(this).data("jPlayer").pause();
+		$(this).data("jPlayer").status.seekPercent;
+		$(this).unbind(".event");
+		$(this).jPlayer("clearMedia");
+		$(this).jPlayer("destroy");
+		$(this).jPlayer("fullScreen");
+		$(this).jPlayer("load");
+		$(this).jPlayer("mute");
+		$(this).jPlayer("option","autohide",{full:false,restored:false});
+		$(this).jPlayer("option","autohide",{fadeIn:2000,fadeOut:2000,hold:4000});
+		$(this).jPlayer("option","cssSelector.play",".jp-play"|"");
+		$(this).jPlayer("option","cssSelector",{play:".jp-play"|""});
+		$(this).jPlayer("option","cssSelectorAncestor");
+		$(this).jPlayer("option","cssSelectorAncestor","#jp_container_1"|"");
+		$(this).jPlayer("option","fullScreen",false);
+		$(this).jPlayer("option","keyBindings",$.jPlayer.prototype.options.keyBindings);
+		$(this).jPlayer("option","keyBindings",{play:{key:32,fn:function(f){}}});
+		$(this).jPlayer("option","keyBindings",{play:null});
+		$(this).jPlayer("option","keyEnabled",true);
+		$(this).jPlayer("option","loop",true);
+		$(this).jPlayer("option","muted",false);
+		$(this).jPlayer("option","nativeVideoControls",{all:/./});
+		$(this).jPlayer("option","noFullWindow",{all:/./});
+		$(this).jPlayer("option","noVolume",{all:/./});
+		$(this).jPlayer("option","size",{width:"480px",height:"270px",cssClass:"jp-video-270p"|"jp-video-360p"});
+		$(this).jPlayer("option","sizeFull",{width:"480px",height:"270px",cssClass:"jp-video-270p"|"jp-video-360p"});
+		$(this).jPlayer("option","volume",0.1);
+		$(this).jPlayer("pause");
+		$(this).jPlayer("pause",1000);
+		$(this).jPlayer("pauseOthers");
+		$(this).jPlayer("play");
+		$(this).jPlayer("play",1000);
+		$(this).jPlayer("playHead",1000);
+		$(this).jPlayer("restoreScreen");
+		$(this).jPlayer("setMedia",{
+			flv:"http://jplayer.org/audio/m4a/Miaow-07-Bubble.flv",
+			free:true,
+			m4a:"http://jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
+			m4v:"http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+			mp3:"http://jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
+			oga:"http://jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
+			ogv:"http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+			poster:"http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png",
+			rtmpv:"rtmp://cp67126.edgefcs.net/ondemand/mp4:mediapm/ovp/content/test/video/spacealonehd_sounas_640_300.mp4",
+			title:"Bubble",
+			webmv:"http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm"
+		});
+		$(this).jPlayer("stop");
+		$(this).jPlayer("unmute");
+		$(this).jPlayer("volume",0.1);
+	},
+	play:function(ev){},
+	timeupdate:function(ev){}
+});
+$("#media_inspector").jPlayerInspector({
+	jPlayer:$("#media_content"),
+	visible:true
+});
+var player=new jPlayerPlaylist({jPlayer:"#media_video_content",cssSelectorAncestor:"#media_video_ancestor"},video,{
+	audioFullScreen:true,
+	autoBlur:false,
+	keyEnabled:true,
+	playlistOptions:{enableRemoveControls:true},
+	smoothPlayBar:true,
+	solution:"flash,html",
+	supplied:"m4v,mp3,oga,ogv,webmv",
+	swfPath:"../dist/jplayer",
+	useStateClassSkin:true
+});
+Popcorn.jplayer("#media_video_content",{
+	media:{
+		m4v:"http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+		ogv:"http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+		poster:"http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png",
+		title:"Big Buck Bunny Trailer",
+		webmv:"http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm"
+	},
+	options:{
+		autoBlur:false,
+		keyEnabled:true,
+		size:{width:"640px",height:"360px",cssClass:"jp-video-360p"},
+		smoothPlayBar:true,
+		solution:"flash,html",
+		supplied:"m4v,ogv,webmv",
+		swfPath:"../dist/jplayer",
+		useStateClassSkin:true
+	}
+}).subtitle({
+	end:6,
+	start:2,
+	text:"This text is the Popcorn Subtitle Plugin"
+});
+new CirclePlayer("#media_audio_content",{
+	m4a:"http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
+	oga:"http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
+},{
+	cssSelectorAncestor:"#media_audio_ancestor",
+	keyEnabled:true,
+	swfPath:"../dist/jplayer",
+	wmode:"window"
+});
+$("#media_ancestor").hide();
+$("#media_ancestor").show();
+$("#media_inspector").jPlayerInspector("destroy");
+$.jPlayer.error.URL_NOT_SET
+$.jPlayer.event.ended
+$.jPlayer.event.ended+".alert"
+$.jPlayer.event.ended+".repeat"
+$.jPlayer.event.pause
+$.jPlayer.event.progress
+$.jPlayer.event.ready
+$.jPlayer.pause();
+$.jPlayer.platform.android
+$.jPlayer.prototype.options.keyBindings
+$.jPlayer.prototype.options.nativeVideoControls
+$.jPlayer.prototype.options.noFullWindow
+$.jPlayer.prototype.options.noVolume
+$.jPlayer.prototype.options.volume
+$.jPlayer.timeFormat.padMin
+$.jPlayer.timeFormat.padSec
+$.jPlayer.timeFormat.sepMin
+$.jPlayer.timeFormat.sepSec
+ev.jPlayer.error.type
+ev.jPlayer.flash.used
+ev.jPlayer.options.muted
+ev.jPlayer.options.supplied
+ev.jPlayer.options.volume
+ev.jPlayer.status.currentPercentAbsolute
+ev.jPlayer.status.currentTime
+ev.jPlayer.status.duration
+ev.jPlayer.status.noVolume
+ev.jPlayer.status.paused
+f.status.paused
+player.add({
+	artist:"Miaow",
+	free:true,
+	mp3:"http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
+	oga:"http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
+	poster:"http://www.jplayer.org/audio/poster/Miaow_640x360.png",
+	title:"Bubble"
+});
+player.add({
+	artist:"The Stark Palace",
+	mp3:"http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
+	oga:"http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
+	poster:"http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png",
+	title:"Your Face"
+},true);
+player.next();
+player.option("addTime",1000);
+player.option("addTime","fast");
+player.option("addTime","slow");
+player.option("autoPlay",true);
+player.option("displayTime",1000);
+player.option("displayTime","fast");
+player.option("displayTime","slow");
+player.option("enableRemoveControls",false);
+player.option("shuffleTime",1000);
+player.option("shuffleTime","fast");
+player.option("shuffleTime","slow");
+player.option("removeTime",1000);
+player.option("removeTime","fast");
+player.option("removeTime","slow");
+player.pause();
+player.play();
+player.play(-1);
+player.play(0);
+player.play(1);
+player.previous();
+player.remove();
+player.remove(-1);
+player.remove(0);
+player.remove(1);
+player.select(-1);
+player.select(0);
+player.select(1);
+player.setPlaylist([{
+	artist:"Miaow",
+	mp3:"http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3",
+	oga:"http://www.jplayer.org/audio/ogg/Miaow-01-Tempered-song.ogg",
+	poster:"http://www.jplayer.org/audio/poster/Miaow_640x360.png",
+	title:"Tempered Song"
+}]);
+player.shuffle();
+player.shuffle(false);
+</pre>
+<script type="text/javascript" src="../../rainbow/rainbow-2.1.2.js"></script>
+<script type="text/javascript" src="../../rainbow/lang/generic.js"></script>
+<script type="text/javascript" src="../../rainbow/lang/javascript.js"></script>
+</body>
+</html>

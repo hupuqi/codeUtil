@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jPlayer Android Fix</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../skin/blue.monday/css/jplayer.blue.monday.min.css">
+<style type="text/css">
+p{margin-top:1rem;}
+p a{line-height:30px;cursor:pointer;text-decoration: underline;color:-webkit-link;}
+</style>
+</head>
+<body>
+<div class="jp-jplayer" id="content"></div>
+<div class="jp-audio" id="jp_container_1">
+	<div class="jp-type-single">
+		<div class="jp-gui jp-interface">
+			<div class="jp-controls">
+				<button class="jp-play">&nbsp;</button>
+				<button class="jp-stop">&nbsp;</button>
+			</div>
+			<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>
+			<div class="jp-volume-controls">
+				<button class="jp-mute">&nbsp;</button>
+				<div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div>
+				<button class="jp-volume-max">&nbsp;</button>
+			</div>
+			<div class="jp-time-holder">
+				<div class="jp-current-time">&nbsp;</div>
+				<div class="jp-duration">&nbsp;</div>
+				<div class="jp-toggles"><button class="jp-repeat">&nbsp;</button></div>
+			</div>
+		</div>
+		<div class="jp-details"><div class="jp-title">&nbsp;</div></div>
+		<div class="jp-no-solution"><span>Update Required</span>To play the media you will need to either update your browser to a recent version or update your <a href="#">Flash plugin</a>.</div>
+	</div>
+</div>
+<p>
+	<a id="audio_set">设置媒体</a>
+	<a id="audio_play">设置并播放</a>
+	<a id="audio_tip"></a>
+</p>
+<script type="text/javascript" src="../../../jquery.min-1.11.1.js"></script>
+<script type="text/javascript" src="../jquery.jplayer.min-2.9.2.js"></script>
+<script type="text/javascript">
+var jPlayerAndroid=(function($){
+	var fix=function(id,media,opts){
+		this.fix=false;
+		this.init(id,media,opts);
+	};
+	fix.prototype={
+		base:function(){
+			if($.jPlayer.platform.android){
+				this.fix=false;
+				this.required=true;
+				this.ended=true;
+			}
+		},
+		init:function(id,media,opts){
+			var $this=this;
+			this.media=media;
+			this.player=$(id);
+			this.player.jPlayer(opts);
+			this.base();
+			$("#audio_tip").html(this.player.jPlayer("option","cssSelectorAncestor"));
+			this.player.bind($.jPlayer.event.ready,function(ev){
+				$this.setMedia($this.media);
+			});
+			if($.jPlayer.platform.android){
+				this.player.bind($.jPlayer.event.progress,function(ev){
+					if($this.required){
+						$this.required=false;
+						if($this.fix){
+							$this.fix=false;
+							$(this).jPlayer("play");
+						}
+					}
+				});
+				this.player.bind($.jPlayer.event.pause,function(ev){
+					if($this.ended&&(ev.jPlayer.status.currentTime==0||ev.jPlayer.status.duration-ev.jPlayer.status.currentTime<1)){
+						$this.player.data("jPlayer")._trigger($.jPlayer.event.ended);
+					}
+				});
+				this.player.bind($.jPlayer.event.ended,function(ev){
+					if($this.ended){
+						$this.ended=false;
+						$this.setMedia($this.media);
+					}
+				});
+			}
+			return this;
+		},
+		set:function(media){
+			this.media=media;
+			this.base();
+			this.player.jPlayer("setMedia",this.media);
+			return this;
+		},
+		play:function(){
+			if($.jPlayer.platform.android&&this.required){
+				this.fix=true;
+			}else{
+				this.player.jPlayer("play");
+			}
+		}
+	};
+	return fix;
+})(jQuery);
+$(document).ready(function(){
+	var music=[
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
+			title:"Bubble"
+		},
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-04-Lismore.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-04-Lismore.ogg",
+			title:"Lismore"
+		}
+	];
+	var aduio=new jPlayerAndroid("#content",music[0],{
+		autoBlur:false,
+		keyEnabled:true,
+		remainingDuration:true,
+		smoothPlayBar:true,
+		supplied:"mp3,oga",
+		swfPath:"../",
+		toggleDuration:true,
+		useStateClassSkin:true,
+		wmode:"window"
+	});
+	$("#audio_set").click(function(){
+		aduio.set(music[1]);
+	});
+	$("#audio_play").click(function(){
+		aduio.set(music[1]).play();
+	});
+});
+</script>
+</body>
+</html>

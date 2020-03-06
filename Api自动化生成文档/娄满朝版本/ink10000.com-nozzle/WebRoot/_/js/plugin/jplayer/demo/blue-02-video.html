@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jPlayer as a video playlist player</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../skin/pink.flag/css/jplayer.pink.flag.min.css">
+<style type="text/css">
+p a{line-height:30px;cursor:pointer;text-decoration: underline;color:-webkit-link;}
+</style>
+</head>
+<body>
+<div class="jp-video jp-video-270p" id="media_video_ancestor">
+	<div class="jp-type-playlist">
+		<div class="jp-jplayer" id="media_video_content"></div>
+		<div class="jp-gui">
+			<div class="jp-video-play"><button class="jp-video-play-icon">&nbsp;</button></div>
+			<div class="jp-interface">
+				<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>
+				<div class="jp-current-time">&nbsp;</div>
+				<div class="jp-duration">&nbsp;</div>
+				<div class="jp-controls-holder">
+					<div class="jp-volume-controls">
+						<button class="jp-mute">&nbsp;</button>
+						<div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div>
+						<button class="jp-volume-max">&nbsp;</button>
+					</div>
+					<div class="jp-controls">
+						<button class="jp-previous">&nbsp;</button>
+						<button class="jp-play">&nbsp;</button>
+						<button class="jp-next">&nbsp;</button>
+						<button class="jp-stop">&nbsp;</button>
+					</div>
+					<div class="jp-toggles">
+						<button class="jp-repeat">&nbsp;</button>
+						<button class="jp-shuffle">&nbsp;</button>
+						<button class="jp-full-screen">&nbsp;</button>
+					</div>
+				</div>
+				<div class="jp-details"><div class="jp-title">&nbsp;</div></div>
+			</div>
+		</div>
+		<div class="jp-playlist"><ul><li>&nbsp;</li></ul></div>
+		<div class="jp-no-solution"><span>Update Required</span>To play the media you will need to either update your browser to a recent version or update your <a href="#">Flash plugin</a>.</div>
+	</div>
+</div>
+<p style="margin-top:1em;">
+	<a rel="list-create">创建列表</a>
+	<a rel="list-shuffle">循环播放</a><br>
+	<a rel="list-add">添加媒体</a>
+	<a rel="list-insert">插入媒体</a>
+	<a rel="list-remove">移除媒体</a><br>
+	<a rel="list-select">选中媒体</a>
+	<a rel="list-preview">上一个</a>
+	<a rel="list-next">下一个</a><br>
+	<a rel="list-play">媒体播放</a>
+	<a rel="list-pause">暂停播放</a><br>
+	<a rel="option-autoplay">自动播放</a>
+	<a rel="option-enable-remove">允许移除</a><br>
+	<a rel="option-display-time">播放列表时间设置</a>
+	<a rel="option-shuffle-time">循环播放时间设置</a><br>
+	<a rel="option-add-time">添加媒体时间设置</a>
+	<a rel="option-remove-time">移除媒作时间设置</a>
+</p>
+<script type="text/javascript" src="../../../jquery.min-1.11.1.js"></script>
+<script type="text/javascript" src="../jquery.jplayer.min-2.9.2.js"></script>
+<script type="text/javascript" src="../lib/jplayer.playlist.min-2.4.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var video=[
+		{
+			artist:"Miaow",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-01-Tempered-song.ogg",
+			poster:"http://www.jplayer.org/audio/poster/Miaow_640x360.png",
+			title:"Tempered Song"
+		},
+		{
+			artist:"Miaow",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
+			poster:"http://www.jplayer.org/audio/poster/Miaow_640x360.png",
+			title:"Hidden"
+		},
+		{
+			artist:"Miaow",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-03-Lentement.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-03-Lentement.ogg",
+			poster:"http://www.jplayer.org/audio/poster/Miaow_640x360.png",
+			title:"Lentement"
+		},
+		{
+			artist:"The Stark Palace",
+			mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg",
+			poster:"http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png",
+			title:"Cro Magnon Man"
+		},
+		{
+			artist:"The Stark Palace",
+			mp3:"http://www.jplayer.org/audio/mp3/TSP-05-Your_face.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/TSP-05-Your_face.ogg",
+			poster:"http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png",
+			title:"Your Face"
+		},
+		{
+			artist:"The Stark Palace",
+			mp3:"http://www.jplayer.org/audio/mp3/TSP-07-Cybersonnet.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/TSP-07-Cybersonnet.ogg",
+			poster:"http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png",
+			title:"Cyber Sonnet"
+		},
+		{
+			artist:"Blender Foundation",
+			free:true,
+			m4v:"http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+			ogv:"http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+			poster:"http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png",
+			title:"Big Buck Bunny Trailer",
+			webmv:"http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm"
+		},
+		{
+			artist:"Pixar",
+			m4v:"http://www.jplayer.org/video/m4v/Finding_Nemo_Teaser.m4v",
+			ogv:"http://www.jplayer.org/video/ogv/Finding_Nemo_Teaser.ogv",
+			poster:"http://www.jplayer.org/video/poster/Finding_Nemo_Teaser_640x352.png",
+			title:"Finding Nemo Teaser",
+			webmv:"http://www.jplayer.org/video/webm/Finding_Nemo_Teaser.webm"
+		},
+		{
+			artist:"Pixar",
+			m4v:"http://www.jplayer.org/video/m4v/Incredibles_Teaser.m4v",
+			ogv:"http://www.jplayer.org/video/ogv/Incredibles_Teaser.ogv",
+			poster:"http://www.jplayer.org/video/poster/Incredibles_Teaser_640x272.png",
+			title:"Incredibles Teaser",
+			webmv:"http://www.jplayer.org/video/webm/Incredibles_Teaser.webm"
+		}
+	];
+	var player=new jPlayerPlaylist({jPlayer:"#media_video_content",cssSelectorAncestor:"#media_video_ancestor"},video,{
+		audioFullScreen:true,
+		autoBlur:false,
+		keyEnabled:true,
+		playlistOptions:{enableRemoveControls:true},
+		smoothPlayBar:true,
+		solution:"flash,html",
+		supplied:"m4v,mp3,oga,ogv,webmv",
+		swfPath:"../",
+		useStateClassSkin:true
+	});
+	$("a[rel]").click(function(){
+		var r=$(this).attr("rel");
+		if(r=="list-create"){
+			player.setPlaylist([
+				{
+					artist:"Miaow",
+					mp3:"http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3",
+					oga:"http://www.jplayer.org/audio/ogg/Miaow-01-Tempered-song.ogg",
+					poster:"http://www.jplayer.org/audio/poster/Miaow_640x360.png",
+					title:"Tempered Song"
+				},
+				{
+					artist:"Blender Foundation",
+					m4v:"http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+					ogv:"http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+					poster:"http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png",
+					title:"Big Buck Bunny Trailer",
+					webmv:"http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm"
+				},
+			]);
+		}else if(r=="list-shuffle"){
+			player.shuffle();
+		}else if(r=="list-add"){
+			player.add({
+				artist:"Miaow",
+				free:true,
+				mp3:"http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
+				oga:"http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
+				poster:"http://www.jplayer.org/audio/poster/Miaow_640x360.png",
+				title:"Bubble"
+			});
+		}else if(r=="list-insert"){
+			player.add({
+				artist:"The Stark Palace",
+				mp3:"http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
+				oga:"http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
+				poster:"http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png",
+				title:"Your Face"
+			},true);
+		}else if(r=="list-remove"){
+			player.remove(-2);
+		}else if(r=="list-select"){
+			player.select(-2);
+		}else if(r=="list-preview"){
+			player.previous();
+		}else if(r=="list-next"){
+			player.next();
+		}else if(r=="list-play"){
+			player.play();
+		}else if(r=="list-pause"){
+			player.pause();
+		}else if(r=="option-autoplay"){
+			player.option("autoPlay",true);
+		}else if(r=="option-enable-remove"){
+			player.option("enableRemoveControls",false);
+		}else if(r=="option-display-time"){
+			player.option("displayTime",2000);
+		}else if(r=="option-add-time"){
+			player.option("addTime",2000);
+		}else if(r=="option-remove-time"){
+			player.option("removeTime",2000);
+		}else if(r=="option-shuffle-time"){
+			player.option("shuffleTime",2000);
+		}
+	});
+});
+</script>
+</body>
+</html>

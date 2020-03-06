@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jPlayer as a video player</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../skin/blue.monday/css/jplayer.blue.monday.min.css">
+</head>
+<body>
+<div class="jp-video jp-video-360p" id="jp_container_1">
+	<div class="jp-type-single">
+		<div class="jp-jplayer" id="media_video_content"></div>
+		<div class="jp-gui">
+			<div class="jp-video-play"><button class="jp-video-play-icon">&nbsp;</button></div>
+			<div class="jp-interface">
+				<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>
+				<div class="jp-current-time">&nbsp;</div>
+				<div class="jp-duration">&nbsp;</div>
+				<div class="jp-controls-holder">
+					<div class="jp-volume-controls">
+						<button class="jp-mute">&nbsp;</button>
+						<div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div>
+						<button class="jp-volume-max">&nbsp;</button>
+					</div>
+					<div class="jp-controls">
+						<button class="jp-play">&nbsp;</button>
+						<button class="jp-stop">&nbsp;</button>
+					</div>
+					<div class="jp-toggles">
+						<button class="jp-repeat">&nbsp;</button>
+						<button class="jp-full-screen">&nbsp;</button>
+					</div>
+				</div>
+				<div class="jp-details"><div class="jp-title">&nbsp;</div></div>
+			</div>
+		</div>
+		<div class="jp-no-solution"><span>Update Required</span>To play the media you will need to either update your browser to a recent version or update your <a href="#">Flash plugin</a>.</div>
+	</div>
+</div>
+<script type="text/javascript" src="../../../jquery.min-1.11.1.js"></script>
+<script type="text/javascript" src="../lib/popcorn.ie8.js"></script>
+<script type="text/javascript" src="../lib/popcorn.js"></script>
+<script type="text/javascript" src="../lib/popcorn.player.js"></script>
+<script type="text/javascript" src="../lib/popcorn.subtitle.js"></script>
+<script type="text/javascript" src="../lib/popcorn.jplayer.min-1.1.6.js"></script>
+<script type="text/javascript" src="../jquery.jplayer.min-2.9.2.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	Popcorn.jplayer("#media_video_content",{
+		media:{
+			m4v:"http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+			ogv:"http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+			poster:"http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png",
+			title:"Big Buck Bunny Trailer",
+			webmv:"http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm"
+		},
+		options:{
+			autoBlur:false,
+			keyEnabled:true,
+			size:{width:"640px",height:"360px",cssClass:"jp-video-360p"},
+			smoothPlayBar:true,
+			solution:"flash,html",
+			supplied:"m4v,ogv,webmv",
+			swfPath:"../",
+			useStateClassSkin:true
+		}
+	}).subtitle({
+		start:2,
+		end:6,
+		text:"你好This text is the Popcorn Subtitle Plugin"
+	}).subtitle({
+		start:6,
+		end:10,
+		text:"Working with the Popcorn jPlayer Player Plugin"
+	}).subtitle({
+		start:10,
+		end:15,
+		text:"Enabling jPlayer to function with the features of Popcorn"
+	}).subtitle({
+		start:16,
+		end:32,
+		text:"Have fun playing with it!"
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>java</title>
+	<meta charset="UTF-8">
+	<link href="../css/zenburnesque.css" rel="stylesheet" type="text/css" media="screen">
+</head>
+<body>
+<pre>
+	<code data-language="java">
+package com.mc.studio.core.entity.auth;
+import java.util.Date;
+import com.mc.studio.core.entity._Entity;
+/**
+ * 基本用户(qx_user)实体类
+ * @author 1138789752@qq.com
+ * @version 2016-08-10 10:52:06
+ * */
+public class User extends _Entity {
+	/**
+	 * 唯一标识
+	 * */
+	public static final long serialVersionUID = 231831912L;
+	/**
+	 * 主键
+	 * */
+	private String id;
+	/**
+	 * 注册账户
+	 * */
+	private String username;
+	/**
+	 * 登录密码
+	 * */
+	private String password;
+	/**
+	 * 安全暗码
+	 * */
+	private String conferma;
+	/**
+	 * 用户头像
+	 * */
+	private String face;
+	/**
+	 * 用户昵称
+	 * */
+	private String nick;
+	/**
+	 * 用户姓名
+	 * */
+	private String name;
+	/**
+	 * 身份证号
+	 * */
+	private String denizen;
+	/**
+	 * 用户性别
+	 * */
+	private Boolean sex;
+	/**
+	 * 血型种类
+	 * */
+	private String blood;
+	/**
+	 * 出生日期
+	 * */
+	private String birth;
+	/**
+	 * 出生城市
+	 * */
+	private String city;
+	/**
+	 * 毕业学校
+	 * */
+	private String school;
+	/**
+	 * 从事职业
+	 * */
+	private String profession;
+	/**
+	 * 联系手机
+	 * */
+	private String phone;
+	/**
+	 * 邮箱地址
+	 * */
+	private String email;
+	/**
+	 * 微信账号
+	 * */
+	private String weix;
+	/**
+	 * 微信标识
+	 * */
+	private String weix_id;
+	/**
+	 * 微信头像
+	 * */
+	private String weix_face;
+	/**
+	 * 备注说明
+	 * */
+	private String note;
+	/**
+	 * 是否锁定
+	 * */
+	private Boolean forbid;
+	/**
+	 * 令牌标识
+	 * */
+	private String token_id;
+	/**
+	 * 令牌失效
+	 * */
+	private Long token_expire;
+	/**
+	 * 归属机构
+	 * */
+	private String yagency;
+	/**
+	 * 创建时间
+	 * */
+	private Date ysave;
+	/**
+	 * 更新时间
+	 * */
+	private Date yedit;
+	/**
+	 * 构造方法
+	 * */
+	public User() {
+		super("qx_user");
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;主键&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位 不为空&lt;/a&gt;
+	 * */
+	public String getId() {
+		return id;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;主键&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位 不为空&lt;/a&gt;
+	 * @param id 主键
+	 * */
+	public String setId(String id) {
+		if(!super.xCheck(id)){
+			this.id = id;
+		}
+		return "id";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;注册账户&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;80位 不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;唯一约束&lt;/a&gt;
+	 * */
+	public String getUsername() {
+		return username;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;注册账户&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;80位 不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;唯一约束&lt;/a&gt;
+	 * @param username 注册账户
+	 * */
+	public String setUsername(String username) {
+		if(!super.xCheck(username)){
+			this.username = username;
+		}
+		return "username";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;登录密码&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;200位 不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;加密前不超过20位&lt;/a&gt;
+	 * */
+	public String getPassword() {
+		return password;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;登录密码&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;200位 不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;加密前不超过20位&lt;/a&gt;
+	 * @param password 登录密码
+	 * */
+	public String setPassword(String password) {
+		if(!super.xCheck(password)){
+			this.password = password;
+		}
+		return "password";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;安全暗码&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;200位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;加密前不超过20位&lt;/a&gt;
+	 * */
+	public String getConferma() {
+		return conferma;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;安全暗码&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;200位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;加密前不超过20位&lt;/a&gt;
+	 * @param conferma 安全暗码
+	 * */
+	public String setConferma(String conferma) {
+		if(conferma!=null){
+			this.conferma = conferma;
+		}
+		return "conferma";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;用户头像&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;外键引用【wj_portray】&lt;/a&gt;
+	 * */
+	public String getFace() {
+		return face;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;用户头像&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;外键引用【wj_portray】&lt;/a&gt;
+	 * @param face 用户头像
+	 * */
+	public String setFace(String face) {
+		if(face!=null){
+			this.face = face;
+		}
+		return "face";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;用户昵称&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;80位&lt;/a&gt;
+	 * */
+	public String getNick() {
+		return nick;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;用户昵称&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;80位&lt;/a&gt;
+	 * @param nick 用户昵称
+	 * */
+	public String setNick(String nick) {
+		if(nick!=null){
+			this.nick = nick;
+		}
+		return "nick";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;用户姓名&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;
+	 * */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;用户姓名&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;
+	 * @param name 用户姓名
+	 * */
+	public String setName(String name) {
+		if(name!=null){
+			this.name = name;
+		}
+		return "name";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;身份证号&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;20位&lt;/a&gt;
+	 * */
+	public String getDenizen() {
+		return denizen;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;身份证号&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;20位&lt;/a&gt;
+	 * @param denizen 身份证号
+	 * */
+	public String setDenizen(String denizen) {
+		if(denizen!=null){
+			this.denizen = denizen;
+		}
+		return "denizen";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;用户性别&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;默认为【true】&lt;/a&gt;
+	 * */
+	public Boolean getSex() {
+		return sex;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;用户性别&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;默认为【true】&lt;/a&gt;
+	 * @param sex 用户性别
+	 * */
+	public String setSex(Boolean sex) {
+		if(sex!=null){
+			this.sex = sex;
+		}
+		return "sex";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;血型种类&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;
+	 * */
+	public String getBlood() {
+		return blood;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;血型种类&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;
+	 * @param blood 血型种类
+	 * */
+	public String setBlood(String blood) {
+		if(blood!=null){
+			this.blood = blood;
+		}
+		return "blood";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;出生日期&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;10位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;格式如【1900-01-01】&lt;/a&gt;
+	 * */
+	public String getBirth() {
+		return birth;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;出生日期&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;10位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;格式如【1900-01-01】&lt;/a&gt;
+	 * @param birth 出生日期
+	 * */
+	public String setBirth(String birth) {
+		if(birth!=null){
+			this.birth = birth;
+		}
+		return "birth";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;出生城市&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;
+	 * */
+	public String getCity() {
+		return city;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;出生城市&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;
+	 * @param city 出生城市
+	 * */
+	public String setCity(String city) {
+		if(city!=null){
+			this.city = city;
+		}
+		return "city";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;毕业学校&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;200位&lt;/a&gt;
+	 * */
+	public String getSchool() {
+		return school;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;毕业学校&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;200位&lt;/a&gt;
+	 * @param school 毕业学校
+	 * */
+	public String setSchool(String school) {
+		if(school!=null){
+			this.school = school;
+		}
+		return "school";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;从事职业&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;200位&lt;/a&gt;
+	 * */
+	public String getProfession() {
+		return profession;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;从事职业&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;200位&lt;/a&gt;
+	 * @param profession 从事职业
+	 * */
+	public String setProfession(String profession) {
+		if(profession!=null){
+			this.profession = profession;
+		}
+		return "profession";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;联系手机&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;20位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;唯一约束&lt;/a&gt;
+	 * */
+	public String getPhone() {
+		return phone;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;联系手机&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;20位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;唯一约束&lt;/a&gt;
+	 * @param phone 联系手机
+	 * */
+	public String setPhone(String phone) {
+		if(phone!=null){
+			this.phone = phone;
+		}
+		return "phone";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;邮箱地址&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;唯一约束&lt;/a&gt;
+	 * */
+	public String getEmail() {
+		return email;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;邮箱地址&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;唯一约束&lt;/a&gt;
+	 * @param email 邮箱地址
+	 * */
+	public String setEmail(String email) {
+		if(email!=null){
+			this.email = email;
+		}
+		return "email";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;微信账号&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;
+	 * */
+	public String getWeix() {
+		return weix;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;微信账号&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;
+	 * @param weix 微信账号
+	 * */
+	public String setWeix(String weix) {
+		if(weix!=null){
+			this.weix = weix;
+		}
+		return "weix";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;微信标识&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;唯一约束&lt;/a&gt;
+	 * */
+	public String getWeix_id() {
+		return weix_id;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;微信标识&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;唯一约束&lt;/a&gt;
+	 * @param weix_id 微信标识
+	 * */
+	public String setWeix_id(String weix_id) {
+		if(weix_id!=null){
+			this.weix_id = weix_id;
+		}
+		return "weix_id";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;微信头像&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;800位&lt;/a&gt;
+	 * */
+	public String getWeix_face() {
+		return weix_face;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;微信头像&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;800位&lt;/a&gt;
+	 * @param weix_face 微信头像
+	 * */
+	public String setWeix_face(String weix_face) {
+		if(weix_face!=null){
+			this.weix_face = weix_face;
+		}
+		return "weix_face";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;备注说明&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;400位&lt;/a&gt;
+	 * */
+	public String getNote() {
+		return note;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;备注说明&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;400位&lt;/a&gt;
+	 * @param note 备注说明
+	 * */
+	public String setNote(String note) {
+		if(note!=null){
+			this.note = note;
+		}
+		return "note";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;是否锁定&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;默认为【false】&lt;/a&gt;
+	 * */
+	public Boolean getForbid() {
+		return forbid;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;是否锁定&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;默认为【false】&lt;/a&gt;
+	 * @param forbid 是否锁定
+	 * */
+	public String setForbid(Boolean forbid) {
+		if(forbid!=null){
+			this.forbid = forbid;
+		}
+		return "forbid";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;令牌标识&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位 不为空&lt;/a&gt;
+	 * */
+	public String getToken_id() {
+		return token_id;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;令牌标识&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位 不为空&lt;/a&gt;
+	 * @param token_id 令牌标识
+	 * */
+	public String setToken_id(String token_id) {
+		if(!super.xCheck(token_id)){
+			this.token_id = token_id;
+		}
+		return "token_id";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;令牌失效&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;20位 不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;默认为【0】&lt;/a&gt;
+	 * */
+	public Long getToken_expire() {
+		return token_expire;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;令牌失效&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;20位 不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;默认为【0】&lt;/a&gt;
+	 * @param token_expire 令牌失效
+	 * */
+	public String setToken_expire(Long token_expire) {
+		if(token_expire!=null){
+			this.token_expire = token_expire;
+		}
+		return "token_expire";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;归属机构&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位 不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;外键引用【xt_agency】&lt;/a&gt;
+	 * */
+	public String getYagency() {
+		return yagency;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;归属机构&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;40位 不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;外键引用【xt_agency】&lt;/a&gt;
+	 * @param yagency 归属机构
+	 * */
+	public String setYagency(String yagency) {
+		if(!super.xCheck(yagency)){
+			this.yagency = yagency;
+		}
+		return "yagency";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;创建时间&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;默认为【系统时间】&lt;/a&gt;
+	 * */
+	public Date getYsave() {
+		return ysave;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;创建时间&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;默认为【系统时间】&lt;/a&gt;
+	 * @param ysave 创建时间
+	 * */
+	public String setYsave(Date ysave) {
+		if(ysave!=null){
+			this.ysave = ysave;
+		}
+		return "ysave";
+	}
+	/**
+	 * 获取&lt;u style="color:#F00;"&gt;更新时间&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;默认为【系统时间】&lt;/a&gt;
+	 * */
+	public Date getYedit() {
+		return yedit;
+	}
+	/**
+	 * 设置&lt;u style="color:#F00;"&gt;更新时间&lt;/u&gt;&lt;br&gt;
+	 * 约束：&lt;a style="color:#40E;"&gt;不为空&lt;/a&gt;&lt;br&gt;
+	 * 备注：&lt;a style="color:#999;"&gt;默认为【系统时间】&lt;/a&gt;
+	 * @param yedit 更新时间
+	 * */
+	public String setYedit(Date yedit) {
+		if(yedit!=null){
+			this.yedit = yedit;
+		}
+		return "yedit";
+	}
+}
+	</code>
+</pre>
+<pre>
+	<code data-language="java">
+package com.mc.studio.yun.view;
+import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import com.mc.studio.core.entity.share.Glance;
+import com.mc.studio.core.entity.yun.Location;
+import com.mc.studio.core.entity.yun.Movie;
+import com.mc.studio.core.entity.yun.Sheet;
+import com.mc.studio.core.entity.yun.Sketche;
+import com.mc.studio.core.service.share.GlanceService;
+import com.mc.studio.core.service.yun.LocationService;
+import com.mc.studio.core.service.yun.MovieService;
+import com.mc.studio.core.service.yun.SheetService;
+import com.mc.studio.core.service.yun.SketcheService;
+import com.mc.studio.core.tool.ServletTool;
+@Controller("com.mc.studio.yun.view.GlobalView")
+@Scope("prototype")
+@RequestMapping("/global/")
+public class GlobalView extends _View {
+	@Autowired
+	private GlanceService glanceService;
+	@Autowired
+	private LocationService locationService;
+	@Autowired
+	private MovieService movieService;
+	@Autowired
+	private SheetService sheetService;
+	@Autowired
+	private SketcheService sketcheService;
+	public GlobalView() {
+		super(GlobalView.class);
+	}
+	@RequestMapping(value="glance",method=RequestMethod.GET)
+	public void glance(HttpServletRequest request, HttpServletResponse response, String target, String id, String url) {
+		try{
+			String address;
+			if(DEVELOP||this.param(null,target,id,address=ServletTool.getRequestAddr(request))!=null){
+				this.glance(response,ERROR.LAW_PARAM.toString(),url);
+				return;
+			}
+			Location location = new Location();
+			Movie movie = new Movie();
+			Sheet sheet = new Sheet();
+			Sketche sketche = new Sketche();
+			
+			Glance en = new Glance();
+			Glance temp = new Glance();
+			String name = null;
+			String value = null;
+			if(target.equals(location.getXtable())){
+				int key = Integer.parseInt(id);
+				location.setId(key);
+				en.setId_dsz(key);
+				temp.setId_dsz(key);
+				name = LOCATION_GLANCE;
+				value = ServletTool.setCookie(request,response,HTTP.ACTION_LOAD,false,name,null);
+			}else if(target.equals(movie.getXtable())){
+				int key = Integer.parseInt(id);
+				movie.setId(key);
+				en.setId_dsz(key);
+				temp.setId_dsz(key);
+				name = MOVIE_GLANCE;
+				value = ServletTool.setCookie(request,response,HTTP.ACTION_LOAD,false,name,null);
+			}else if(target.equals(sheet.getXtable())){
+				sheet.setId(id);
+				en.setId_zfc(id);
+				temp.setId_zfc(id);
+				name = SHEET_GLANCE;
+				value = ServletTool.setCookie(request,response,HTTP.ACTION_LOAD,false,name,null);
+			}else if(target.equals(sketche.getXtable())){
+				sketche.setId(id);
+				en.setId_zfc(id);
+				temp.setId_zfc(id);
+				name = SKETCHE_GLANCE;
+				value = ServletTool.setCookie(request,response,HTTP.ACTION_LOAD,false,name,null);
+			}else{
+				this.glance(response,ERROR.LAW_PARAM.toString(),url);
+				return;
+			}
+			if(value!=null&amp;&amp;value.indexOf(id+"-")!=-1){
+				this.glance(response,OK,url);
+				return;
+			}
+			en.setTarget(target);
+			en.setXdom(true,en.setYsave(null),"&gt;=",new Date(System.currentTimeMillis()-GLANCE_EXPIRE));
+			if(glanceService.count(en)&gt;0){
+				this.glance(response,OK,url);
+				return;
+			}
+			
+			String refer = ServletTool.getRequestReferer(request);
+			String[]agent = ServletTool.getRequestAgent(request);
+			temp.setTarget(target);
+			temp.setAddress(address);
+			temp.setRefer(refer);
+			if(agent!=null){
+				temp.setAgent(agent[0]);
+			}
+			if(OK.equals(glanceService.save(temp))){
+				long qty = glanceService.count(en);
+				if(qty&gt;0){
+					if(target.equals(location.getXtable())){
+						location.setQty_open(qty);
+						locationService.update(location);
+					}else if(target.equals(movie.getXtable())){
+						movie.setQty_open(qty);
+						movieService.update(movie);
+					}else if(target.equals(sheet.getXtable())){
+						sheet.setQty_open(qty);
+						sheetService.update(sheet);
+					}else if(target.equals(sketche.getXtable())){
+						sketche.setQty_open(qty);
+						sketcheService.update(sketche);
+					}
+					ServletTool.setCookie(request,response,HTTP.ACTION_SAVE,false,name,value==null?id+"-":(value.length()+id.length()+1&gt;COOKIE_DATA_LENGTH?id+"-":value+id+"-"));
+				}
+			}
+			this.glance(response,OK,url);
+		}catch(Exception e){
+			this.glance(response,e.getMessage(),url);
+		}
+	}
+	private void glance(HttpServletResponse response, String message, String url){
+		try{
+			if(url!=null&amp;&amp;!url.equals("")){
+				response.sendRedirect(url);
+			}else{
+				response.setCharacterEncoding("UTF-8");
+				response.setContentType("text/html; charset=UTF-8");
+				response.getWriter().write(message);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}
+	</code>
+</pre>
+<script type="text/javascript" src="../rainbow-2.1.2.js"></script>
+<script type="text/javascript" src="../lang/generic.js"></script>
+<script type="text/javascript" src="../lang/java.js"></script>
+</body>
+</html>

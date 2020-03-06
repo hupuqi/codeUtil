@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Syntax Highlighting</title>
+	<meta charset="UTF-8">
+	<link href="../css/all-hallows-eve.css" rel="stylesheet" type="text/css" media="screen">
+</head>
+<body>
+<h1>API Test Page</h1>
+<div id="stuff">
+	<p>0.code on page to begin with</p>
+	<pre data-language="javascript"><code>1.var foo = false;</code></pre>
+</div>
+<script type="text/javascript" src="../../jquery.min-2.2.3.js"></script>
+<script type="text/javascript" src="../rainbow-2.1.2.js"></script>
+<script type="text/javascript" src="../lang/generic.js"></script>
+<script type="text/javascript" src="../lang/javascript.js"></script>
+<script type="text/javascript" src="../lang/html.js"></script>
+<script type="text/javascript">
+window.setTimeout(function() {
+	$("#stuff").append("<p>2.code added to page then highlighted:</p><pre data-language=\"javascript\"><code>3.function hello(name) {\n    alert(\"Hello \" + name);\n}</code></pre>");
+	Rainbow.color();
+	window.setTimeout(function() {
+		Rainbow.color("<html><h2>5.Hi World! &amp;amp; test</h2></html>","html",function(code){
+			$("#stuff").append("<p>4.code from string:</p><pre class=\"rainbow\">"+code+"</pre>");
+		});
+		window.setTimeout(function(){
+			var div=document.createElement("div");
+			div.innerHTML="<p>6.code from div:</p><pre><code data-language=\"javascript\">7.var whatever = function() {};</code></pre>";
+			Rainbow.color(div,function(){
+				document.getElementById("stuff").appendChild(div);
+			});
+			window.setTimeout(function(){
+				$("#stuff").append("<p>8.code inserted dynamically no callback:</p><pre><code data-language=\"javascript\">9.var html = document.getElementById(\"stuff\").innerHTML;</code></pre>");
+				Rainbow.color();
+				window.setTimeout(function(){
+					$("#stuff").append("<p>10.code inserted dynamically with callback:</p><pre><code data-language=\"javascript\">11.var html = $(\"#stuff\").html();</code></pre>");
+					Rainbow.color(function(){
+						$("#stuff").append("<p>12.got callback<p>");
+					});
+				},250);
+			},250);
+		},250);
+	},250);
+},250);
+</script>
+</body>
+</html>

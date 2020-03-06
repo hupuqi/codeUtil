@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jPlayer as an audio playlist player</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../skin/blue.monday/css/jplayer.blue.monday.min.css">
+</head>
+<body>
+<div class="jp-jplayer" id="media_audio_content"></div>
+<div class="jp-audio" id="media_audio_ancestor">
+	<div class="jp-type-playlist">
+		<div class="jp-gui jp-interface">
+			<div class="jp-controls">
+				<button class="jp-previous">&nbsp;</button>
+				<button class="jp-play">&nbsp;</button>
+				<button class="jp-next">&nbsp;</button>
+				<button class="jp-stop">&nbsp;</button>
+			</div>
+			<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>
+			<div class="jp-time-holder">
+				<div class="jp-current-time">&nbsp;</div>
+				<div class="jp-duration">&nbsp;</div>
+			</div>
+			<div class="jp-volume-controls">
+				<button class="jp-mute">&nbsp;</button>
+				<div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div>
+				<button class="jp-volume-max">&nbsp;</button>
+			</div>
+			<div class="jp-toggles">
+				<button class="jp-repeat">&nbsp;</button>
+				<button class="jp-shuffle">&nbsp;</button>
+			</div>
+		</div>
+		<div class="jp-playlist"><ul><li>&nbsp;</li></ul></div>
+		<div class="jp-no-solution"><span>Update Required</span>To play the media you will need to either update your browser to a recent version or update your <a href="#">Flash plugin</a>.</div>
+	</div>
+</div>
+<script type="text/javascript" src="../../../jquery.min-1.11.1.js"></script>
+<script type="text/javascript" src="../jquery.jplayer.min-2.9.2.js"></script>
+<script type="text/javascript" src="../lib/jplayer.playlist.min-2.4.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var audio=[
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-01-Tempered-song.ogg",
+			title:"Tempered Song"
+		},
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
+			title:"Hidden"
+		},
+		{
+			free:true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-03-Lentement.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-03-Lentement.ogg",
+			title:"Lentement"
+		},
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-04-Lismore.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-04-Lismore.ogg",
+			title:"Lismore"
+		},
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-05-The-separation.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-05-The-separation.ogg",
+			title:"The Separation"
+		},
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-06-Beside-me.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-06-Beside-me.ogg",
+			title:"Beside Me"
+		},
+		{
+			free:true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
+			title:"Bubble"
+		},
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-08-Stirring-of-a-fool.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-08-Stirring-of-a-fool.ogg",
+			title:"Stirring of a Fool"
+		},
+		{
+			free:true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-09-Partir.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-09-Partir.ogg",
+			title:"Partir"
+		},
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-10-Thin-ice.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-10-Thin-ice.ogg",
+			title:"Thin Ice"
+		},
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg",
+			title:"Cro Magnon Man"
+		},
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/TSP-05-Your_face.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/TSP-05-Your_face.ogg",
+			title:"Your Face"
+		},
+		{
+			mp3:"http://www.jplayer.org/audio/mp3/TSP-07-Cybersonnet.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/TSP-07-Cybersonnet.ogg",
+			title:"Cyber Sonnet"
+		}
+	];
+	new jPlayerPlaylist({jPlayer:"#media_audio_content",cssSelectorAncestor:"#media_audio_ancestor"},audio,{
+		autoBlur:false,
+		cssSelectorAncestor:"#media_audio_ancestor",
+		keyEnabled:true,
+		smoothPlayBar:true,
+		supplied:"mp3,oga",
+		swfPath:"../",
+		useStateClassSkin:true,
+		wmode:"window"
+	});
+});
+</script>
+</body>
+</html>
